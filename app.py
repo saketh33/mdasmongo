@@ -273,7 +273,10 @@ def leveladd(levelname):
                     findbeforelevel=hierarchydb.find_one({"email": email},{'_id':0,"levelnames."+beforelevel:1})
                     beforelevelnumber=findbeforelevel['levelnames'][beforelevel]['levelstr']
                     levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,beforelevelnumber+".levelname":1,beforelevelnumber+".levels":1})
-                    lvlnm=levelnumberfind[beforelevelnumber]['levelname']
+                    clevelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,levelnumber+".levelname":1})
+                    print(levelnumberfind)
+                    lvlnm=clevelnumberfind[levelnumber]['levelname']
+                    print(lvlnm)
                     lvldt=levelnumberfind[beforelevelnumber]['levels']
                     levelist=list(lvldt.keys())
                     return render_template('leveladd.html',levelname=lvlnm,email=email,levelist=levelist)
