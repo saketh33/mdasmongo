@@ -197,53 +197,59 @@ def myleveldetails(levelname):
     if "email" in session:
         email = session["email"]
     findlevelnames=hierarchydb.find_one({"email": email},{'_id':0,'levelnames':1})
-    levelnames=findlevelnames.get('levelnames');levelnameslist=list(levelnames.keys())
-    if l in levelnameslist:
-        levelnumber=levelnames.get(l)
-        levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,levelnumber:1})
-        m=levelnumberfind.get(levelnumber);lvlnm=m.get('levelname');lvldt=m.get('levels')
-        if lvlnm:
-            if lvldt:
-                return render_template('leveldetails.html',levelname=lvlnm,levels=lvldt,email=email,levelnumber=levelnumber)
+    if findlevelnames:
+        levelnames=findlevelnames.get('levelnames');levelnameslist=list(levelnames.keys())
+        if l in levelnameslist:
+            levelnumber=levelnames.get(l)
+            levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,levelnumber:1})
+            m=levelnumberfind.get(levelnumber);lvlnm=m.get('levelname');lvldt=m.get('levels')
+            if lvlnm:
+                if lvldt:
+                    return render_template('leveldetails.html',levelname=lvlnm,levels=lvldt,email=email,levelnumber=levelnumber)
+                else:
+                    return render_template('leveldetails.html',levelname=lvlnm,levels=0,email=email,levelnumber=levelnumber)
             else:
-                return render_template('leveldetails.html',levelname=lvlnm,levels=0,email=email,levelnumber=levelnumber)
+                return render_template('leveldetails.html',levelname=0,levels=0,email=email,levelnumber=levelnumber)
         else:
-            return render_template('leveldetails.html',levelname=0,levels=0,email=email,levelnumber=levelnumber)
+            return "no such level found"
     else:
-        return "no such level found"
+        return "you dont have any levels"
 
 
-@app.route('/<levelname>/addlevel', methods=['POST',"GET"])
+@app.route('/<levelname>/adddata', methods=['POST',"GET"])
 def leveladd(levelname):
     l=levelname
     if "email" in session:
         email = session["email"]
     findlevelnames=hierarchydb.find_one({"email": email},{'_id':0,'levelnames':1})
-    levelnames=findlevelnames.get('levelnames');levelnameslist=list(levelnames.keys())
-    if l in levelnameslist:
-        levelnumber=levelnames.get(l)
-        print(levelnumber)
-        if request.method == "POST":
-            print("yes")
-            levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,levelnumber:1})
-            print(levelnumberfind)
-            m=levelnumberfind.get(levelnumber);lvlnm=m.get('levelname');lvldt=m.get('levels')
-            name = request.form.get("name")
-            meterid = request.form.get("meterid")
-            address = request.form.get("address")
-            pincode = request.form.get("pincode")
+    if findlevelnames:
+        levelnames=findlevelnames.get('levelnames');levelnameslist=list(levelnames.keys())
+        if l in levelnameslist:
+            levelnumber=levelnames.get(l)
+            print(levelnumber)
+            if request.method == "POST":
+                print("yes")
+                levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,levelnumber:1})
+                print(levelnumberfind)
+                m=levelnumberfind.get(levelnumber);lvlnm=m.get('levelname');lvldt=m.get('levels')
+                name = request.form.get("name")
+                meterid = request.form.get("meterid")
+                address = request.form.get("address")
+                pincode = request.form.get("pincode")
 
-            insertlevel={lvlnm+'meterid':meterid,lvlnm+'address':address,lvlnm+'pincode':pincode}
-            hierarchydb.update_one({"email": email},{"$set": {levelnumber+'.levels.'+name:insertlevel}})
-            return redirect(url_for('myleveldetails',levelname=l))
+                insertlevel={lvlnm+'meterid':meterid,lvlnm+'address':address,lvlnm+'pincode':pincode}
+                hierarchydb.update_one({"email": email},{"$set": {levelnumber+'.levels.'+name:insertlevel}})
+                return redirect(url_for('myleveldetails',levelname=l))
 
+            else:
+                print("no")
+                levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,levelnumber+".levelname":1,levelnumber+".levels":1})
+                m=levelnumberfind.get(levelnumber);lvlnm=m.get('levelname');lvldt=m.get('levels')
+                return render_template('leveladd.html',levelname=lvlnm,email=email)
         else:
-            print("no")
-            levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,levelnumber+".levelname":1,levelnumber+".levels":1})
-            m=levelnumberfind.get(levelnumber);lvlnm=m.get('levelname');lvldt=m.get('levels')
-            return render_template('leveladd.html',levelname=lvlnm,email=email)
+            return "level name not found"
     else:
-        return "level name not found"
+        return "you cannot add levels to no existing level"
 
 if __name__ == "__main__":
   app.run(debug=True, host='0.0.0.0', port=5000)
