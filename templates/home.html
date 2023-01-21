@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10; IE=11; IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Content/Site.css" rel="stylesheet" type="text/css" />
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link href="main.87c0748b313a1dda75f5.css" rel="stylesheet">
+
+    <link href="Content/assets/main.87c0748b313a1dda75f5.css" rel="stylesheet" />
+</head>
+<body>
+<p>Hello You have Logged in as {{ email }}</p>
+<h1>all meters</h1>
+<select id="select" class="form-control" size="15">
+    {% for i in allmeters %}
+    <option value={{i}} selected="selected">{{i}}</option>
+    {%endfor%}
+</select>
+
+<a href="{{url_for('myhierarchyshwolevels')}}">show my levels</a>
+</body>
+</html>

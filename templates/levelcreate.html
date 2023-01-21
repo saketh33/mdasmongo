@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Login System{% endblock %}
+
+{% block content %}
+
+{% if message  %}
+    <div class="alert alert-secondary" role="alert">
+        <p>{{ message }}</p>
+    </div>
+{% endif %}
+
+<form action="" method="post">
+  <div class="form-group">
+      <label for="inputlevel">level Name</label>
+      <input name="levelname" class="form-control" for="inputlevel" placeholder="Hierarchy Name">
+
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

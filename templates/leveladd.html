@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Login System{% endblock %}
+
+{% block content %}
+
+{% if message  %}
+    <div class="alert alert-secondary" role="alert">
+        <p>{{ message }}</p>
+    </div>
+{% endif %}
+
+<form action="" method="post">
+  <div class="form-group">
+      <label for="inputname">{{levelname}} Name</label>
+      <input name="name" class="form-control" for="inputname" placeholder="Hierarchy Name">
+      <label for="inputmeterid">{{levelname}} Meter ID</label>
+      <input name="meterid" class="form-control" for="inputmeterid" placeholder="Hierarchy Name">
+      <label for="inputaddress">{{levelname}} Address</label>
+      <input name="address" class="form-control" for="inputaddress" placeholder="Hierarchy Name">
+      <label for="inputpincode">{{levelname}} Pin code</label>
+      <input name="pincode" class="form-control" for="inputpincode" placeholder="Hierarchy Name">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

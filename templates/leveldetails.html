@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Login System{% endblock %}
+
+{% block content %}
+
+{% if message  %}
+    <div class="alert alert-secondary" role="alert">
+        <p>{{ message }}</p>
+    </div>
+{% endif %}
+<p><a href="{{url_for('myhierarchyshwolevels')}}">back to hierachy</a></p><p><a href="{{url_for('myleveldetails',levelname=levelname)}}">{{levelname}}</a></p>
+
+<p>
+    level name is {{levelname}}
+</p>
+<p>
+    level number is {{levelnumber}}
+</p>
+
+{% if levels==0 %}
+        <p>
+            you dont have any data in the {{levelname}}, sorry !
+        </p>
+    {% else %}
+       
+
+        <table>
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for key, value in levels.items() %}
+             <tr>
+                 <td> {{ key }} </td>
+                 <td> {{ value }} </td>
+             </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        
+    {% endif %}
+    <a href="{{url_for('leveladd',levelname=levelname)}}">add new {{levelname}}</a>
+{% endblock %}
