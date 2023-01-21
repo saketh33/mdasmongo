@@ -236,6 +236,7 @@ def leveladd(levelname):
             possition=possition-1
             if possition<0:
                 if request.method == "POST":
+                    print("it came if")
                     levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,levelnumber:1})
                     m=levelnumberfind.get(levelnumber);lvlnm=m.get('levelname');lvldt=m.get('levels')
                     name = request.form.get("name")
@@ -250,7 +251,7 @@ def leveladd(levelname):
                 else:
                     levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,levelnumber+".levelname":1,levelnumber+".levels":1})
                     m=levelnumberfind.get(levelnumber);lvlnm=m.get('levelname');lvldt=m.get('levels')
-                    return render_template('leveladd.html',levelname=lvlnm,email=email)
+                    return render_template('leveladd.html',levelname=lvlnm,level=0)
             else:
                 if request.method == "POST":
                     levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,levelnumber:1})
@@ -264,7 +265,7 @@ def leveladd(levelname):
                     findbeforelevel=hierarchydb.find_one({"email": email},{'_id':0,"levelnames."+beforelevel:1})
                     beforelevelnumber=findbeforelevel['levelnames'][beforelevel]['levelstr']
                     levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,beforelevelnumber+".levels."+linkingto:1})
-                    insertlevel={'linkstring':beforelevelnumber+".levels."+linkingto,lvlnm+'meterid':meterid,lvlnm+'address':address,lvlnm+'pincode':pincode}
+                    insertlevel={'linkstring':beforelevelnumber+".levels."+linkingto,'linkvalue':linkingto,lvlnm+'meterid':meterid,lvlnm+'address':address,lvlnm+'pincode':pincode}
                     hierarchydb.update_one({"email": email},{"$set": {levelnumber+'.levels.'+name:insertlevel}})
                     return redirect(url_for('myleveldetails',levelname=l))
                 else:

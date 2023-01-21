@@ -10,11 +10,15 @@
 {% endif %}
 <form action="" method="post">
   <div class="form-group">
+    {% if level==0%}
+        <p>you are in base level</p>
+    {%else %}
     <select name="linkingto" id="linkingto">
         {% for i in levelist %}    
         <option value="{{i}}">{{i}}</option>
         {% endfor %}
       </select>
+    {% endif %}
       <label for="inputname">{{levelname}} Name</label>
       <input name="name" class="form-control" for="inputname" placeholder="Hierarchy Name">
       <label for="inputmeterid">{{levelname}} Meter ID</label>

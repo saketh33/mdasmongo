@@ -38,9 +38,14 @@
                             <td><a href="{{url_for('myleveldetails',levelname=i)}}">show level details</a></td>  
                           </tr> 
                           {%endfor%} 
+                          
+                          
                         </tbody>  
                 </table>  
             </div>
+            <h4>balance tags are {{10-leng}}</h4>
+                          
+            <a href="{{url_for('myhierarchycreate')}}">create new level</a></td>
         {% endif %}
 {% endif %}
 
