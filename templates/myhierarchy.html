@@ -1,37 +1,56 @@
 {% extends "base.html" %}
+<!DOCTYPE html>   
+<html lang="en">   
+<head>
 {% block title %}Youv'e logged in {% endblock %}
 
 {% block content %}
-
-{% if message  %}
+<body style="margin:20px auto">
+    {% if message  %}
     <div class="alert alert-secondary" role="alert">
         <p>{{ message }}</p>
     </div>
-{% endif %}
-
+{% endif %}  
 <p>Hello You have Logged in as {{ email }}</p>
 
 {% if showhierarchy==0 %}
-<p>you dont have any hirerachy</p>
-
+    <p>you dont have any hirerachy</p>
 {% else %}
-<p>your hierarchy name is {{ showhierarchy }}</p>
-
-{% if list==0 %}
-        <p>
-            you dont have any levels, sorry !
-
-            <a href="{{url_for('myhierarchycreate')}}">create level</a>
-        </p>
+    <p>your hierarchy name is {{ showhierarchy }}</p>
+    {% if list==0 %}
+        <p>you dont have any levels, sorry !<a href="{{url_for('myhierarchycreate')}}">create level</a></p>
     {% else %}
-    <p>
-        you have only {{leng}} levels as of now
-    </p>
-        {% for i in list %}
-            <option value={{i}} selected="selected">{{i}}</option> <a href="{{url_for('myleveldetails',levelname=i)}}">show level details</a>
-        {%endfor%}
-    {% endif %}
-
+        <p>you have only {{leng}} levels as of now</p>
+            
+            <div class="container">
+                <div class="row header" style="text-align:center;color:green"></div>
+                <table id="myTable" class="table table-striped" >  
+                    <thead>  
+                          <tr>  
+                            <th>hierarchy</th>  
+                            <th>action</th>  
+                          </tr>  
+                    </thead>  
+                        <tbody> 
+                            {% for i in list %}   
+                          <tr>  
+                            <td>{{i}}</td>  
+                            <td><a href="{{url_for('myleveldetails',levelname=i)}}">show level details</a></td>  
+                          </tr> 
+                          {%endfor%} 
+                        </tbody>  
+                </table>  
+            </div>
+        {% endif %}
 {% endif %}
 
+<script>
+    $(document).ready(function(){
+        $('#myTable').dataTable();
+    });
+    </script>
 {% endblock %}
+
+</body>  
+
+</html> 

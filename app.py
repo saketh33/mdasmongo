@@ -165,15 +165,17 @@ def myhierarchycreate():
     if "email" in session:
         email = session["email"]
     level_find=hierarchydb.find_one({"email": email},{'levelscreated':1,'fixlevel':1,'_id':0})
+    print(level_find)
     if level_find:
         levelscreated=level_find['levelscreated']
+        print(levelscreated)
         fixlevel=level_find['fixlevel']
+        print(fixlevel)
         if request.method == "POST":
             levelname = request.form.get("levelname")
-            name=str(levelname+'levels')
-            print(name)
             if int(levelscreated)<fixlevel:
                 levelstr='level'+str(levelscreated)
+                levelpossition=levelscreated
                 levelscreated=levelscreated+1
                 hierarchydb.update_one({"email": email},{"$set": 
                                                                 {levelstr: 
@@ -183,7 +185,11 @@ def myhierarchycreate():
                                                                         }
                                                                         },
                                                                         "levelscreated":levelscreated}})
-                hierarchydb.update_one({"email": email},{"$set":{'levelnames.'+levelname:levelstr}})
+                hierarchydb.update_one({"email": email},{"$set":
+                                                                {'levelnames.'+levelname:
+                                                                                        {levelstr,
+                                                                                        levelpossition
+                                                                }}})
                 return redirect(url_for("myhierarchyshwolevels"))
             else:
                 return redirect(url_for("myhierarchyshwolevels"))
