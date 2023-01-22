@@ -12,7 +12,6 @@ meterids=db.meterids
 mdas=db.mdas
 hierarchydb = db.hierarchy
 
-#assign URLs to have a particular route 
 @app.route("/", methods=['post', 'get'])
 def index():
     message = ''
@@ -25,7 +24,6 @@ def index():
         email = request.form.get("email")
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
-        #if found in database showcase that it's found 
         user_found = records.find_one({"name": user})
         email_found = records.find_one({"email": email})
         if user_found:
@@ -38,17 +36,11 @@ def index():
             message = 'Passwords should match!'
             return render_template('index.html', message=message)
         else:
-            #hash the password and encode it
             hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
-            #assing them in a dictionary in key value pairs
             user_input = {'name': user, 'email': email, 'password': hashed}
-            #insert it in the record collection
             records.insert_one(user_input)
-            
-            #find the new created account and its email
             user_data = records.find_one({"email": email})
             new_email = user_data['email']
-            #if registered redirect to logged in as the registered user
             return render_template('home.html', email=new_email)
     return render_template('index.html')
 
@@ -61,13 +53,10 @@ def login():
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
-
-        #check if email exists in database
         email_found = records.find_one({"email": email})
         if email_found:
             email_val = email_found['email']
             passwordcheck = email_found['password']
-            #encode the password and check if it matches
             if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
                 return redirect(url_for('home'))
@@ -165,12 +154,9 @@ def myhierarchycreate():
     if "email" in session:
         email = session["email"]
     level_find=hierarchydb.find_one({"email": email},{'levelscreated':1,'fixlevel':1,'_id':0})
-    print(level_find)
     if level_find:
         levelscreated=level_find['levelscreated']
-        print(levelscreated)
         fixlevel=level_find['fixlevel']
-        print(fixlevel)
         if request.method == "POST":
             levelname = request.form.get("levelname")
             if int(levelscreated)<fixlevel:
@@ -236,7 +222,6 @@ def leveladd(levelname):
             possition=possition-1
             if possition<0:
                 if request.method == "POST":
-                    print("it came if")
                     levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,levelnumber:1})
                     m=levelnumberfind.get(levelnumber);lvlnm=m.get('levelname');lvldt=m.get('levels')
                     name = request.form.get("name")
@@ -274,9 +259,7 @@ def leveladd(levelname):
                     beforelevelnumber=findbeforelevel['levelnames'][beforelevel]['levelstr']
                     levelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,beforelevelnumber+".levelname":1,beforelevelnumber+".levels":1})
                     clevelnumberfind=hierarchydb.find_one({"email": email},{'_id':0,levelnumber+".levelname":1})
-                    print(levelnumberfind)
                     lvlnm=clevelnumberfind[levelnumber]['levelname']
-                    print(lvlnm)
                     lvldt=levelnumberfind[beforelevelnumber]['levels']
                     levelist=list(lvldt.keys())
                     return render_template('leveladd.html',levelname=lvlnm,email=email,levelist=levelist)

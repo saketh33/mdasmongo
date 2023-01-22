@@ -1,10 +1,12 @@
 from pymongo import MongoClient
-import bson
-client = MongoClient('localhost', 27017)
-db = client.local
+import pymongo
+from urllib.parse import quote_plus
+username = quote_plus('saketh123')
+password = quote_plus('Saketh@123')
+client = pymongo.MongoClient("mongodb+srv://saketh123:<password>@sangrah.vxyjqlu.mongodb.net/?retryWrites=true&w=majority",27017)
+db = client.sangrah
 mdas = db.mdas
-meterids=db.meterids
-hierarchydb=db.hierarchy
+mdas.insert_one({"_id":0, "user_name":"Soumi"})
 #f= list(mdas.find({'MeterId': {'$exists': True}},{'MeterId':1,'_id':0}).MeterId)
 
 
@@ -34,9 +36,10 @@ for i in l:
     name=x.get('levelname')
     print(name)'''
 
-f=hierarchydb.find_one({"email": demail},{'_id':0,'levelnames.zone.levelstr':1})
+'''f=hierarchydb.find_one({"email": demail},{'_id':0,'levelnames.zone.levelstr':1})
 print(f['levelnames'])
 if f:
     print("yes")
 else:
-    print("no")
+    print("no")'''
+
