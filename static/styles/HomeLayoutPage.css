@@ -1,0 +1,83 @@
+﻿/*#region [File Header]
+     * $Archive: $
+     * $Revision: 1.0 $
+     * $Date: 19-Feb-2019 $
+     * $Author: Amarendra Sasmal $
+     *
+     * Copyright © 2019 Larsen and Toubro
+     * All rights reserved.
+     * 
+     * This software is the confidential and proprietary information
+     * of Larsen and Toubro.  Copying or reproduction without prior written
+     * approval is prohibited.
+ */
+
+/*<---[History]---->
+    CSS Name         : HomeLayoutPage
+    CSS Class ID     : MDASWeb.Content.HomeLayoutPage
+    CSS Purpose	     : To style the HTML elements of Home page.
+
+    Revision History:
+    -----------------------------------------------------------------------
+        Ver #        Date            Author/Modified By         Remarks
+    -----------------------------------------------------------------------
+        1.0        19-Feb-2019         Amarendra Sasmal          Initial
+    -----------------------------------------------------------------------*/
+
+/***************************************** HOME PAGE *****************************************/
+
+#Options {
+    margin-top: 140px;
+    margin-left: -40px;
+    padding: 3px;
+    padding-bottom: 315px;
+    border: 2px solid;
+    border-color: #6799a3;
+    border-radius: 7px;
+    border-style: solid;
+    min-width: 200px;
+    max-width: 250px;
+    min-height: 200px;
+    max-height: 900px;
+    background-color: #254A69 !important;
+}
+
+hr {
+    clear: both;
+    visibility: hidden;
+}
+
+#LabelDesign {
+    padding-top: 25px;
+    text-align: center;
+    text-decoration-style: solid;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    clear: both;
+}
+
+#UnderHomebtn {
+    background-color: #A9CDEC !important;
+    border: 1px solid;
+    border-color: #A9CDEC;
+    border-radius: 3px;
+    width: 200px;
+    height: 30px;
+    margin-left: 19px;
+}
+
+    #UnderHomebtn:hover {
+        background-color: #eaec4e !important;
+        border: 1px solid;
+        border-color: #eaec4e;
+        border-radius: 3px;
+    }
+
+    #UnderHomebtn:active {
+        background-color: #ffa02a !important;
+        border: 1px solid;
+        border-color: #ffa02a;
+        border-radius: 3px;
+    }
+
+/***************************************** END *****************************************/

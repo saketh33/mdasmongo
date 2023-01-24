@@ -1,0 +1,180 @@
+﻿body {
+}
+
+/*Segment form 1600*900,1280*1024,1280*960*/
+@media (min-height: 800px) and (max-height: 1024px) {
+ body{
+       
+
+    }
+    #main_nav {
+        height:100px;
+    }
+    #DisplayText {
+        margin-top:6px;
+        font-size:31px;
+    }
+    #MenuFonts,#drpbtn {
+       font-size:18px;
+    }
+      
+    #mainContent {
+        margin-top:60px;
+    
+    }
+    #mySidenav {
+         margin-top:111px;
+    }
+
+    .nav-item,.nav-link {
+        height:5px;
+    }
+     #exportDrpBtn {
+        margin-left:15%; 
+    }
+}
+/*Segment form 1280*768,1280*720*/
+@media (min-height: 600px) and (max-height: 800px) {
+ body{
+      
+    }
+    #main_nav {
+        height:88px;
+    }
+    #DisplayText {
+        margin-top:4px;
+        font-size:27px;
+    }
+    #MenuFonts,#drpbtn {
+       font-size:16px;
+    }
+    #MenuBar {
+        margin-top: -5px;
+    }
+    #mainContent {
+        margin-top:52px;
+      
+    }
+    #mySidenav {
+         margin-top:103px;
+         height:465px;
+    }
+    #SearchField {
+        margin-top:-50px;
+        
+    }
+    #ViewMeter {
+        margin-left:-40px;
+         margin-top:30px;
+    }
+    #Lstmeters {
+          margin-top:-20%;
+    }
+    #dropdowns{
+         margin-top:-20px;
+    }
+    /*#ReportsBar,.nav-link {
+    height:10px;
+    }*/
+    #RptTypes{
+        font-size:8px;
+    }
+    .nav-pills {
+	    font-size:8px;
+    }
+    
+}
+/*Segment form 800*600*/
+@media (min-height: 400px) and (max-height: 600px) {
+ body{
+      
+    }
+    #main_nav {
+        height:84px;
+    }
+    #DisplayText {
+        margin-top:2px;
+        font-size:24px;
+    }
+    #MenuFonts,#drpbtn {
+       font-size:14px;
+    }
+    #MenuBar {
+        margin-top: -6px;
+    }
+    #mainContent {
+        margin-top:40px;
+      
+    }
+    #mySidenav {
+         margin-top:92px;
+         height:410px;
+         
+    }
+    #SearchField {
+        margin-top:-50px;
+        
+    }
+    #ViewMeter {
+        margin-left:-40px;
+         margin-top:30px;
+    }
+    #Lstmeters {
+          margin-top:-30%;
+    }
+    #dropdowns{
+         margin-top:-25px;
+    }
+
+}
+
+@media only screen and (max-width: 1152px) {
+        #main_nav {
+        height:100px; 
+    }
+    #DisplayText {
+        margin-top:6px;
+        font-size:31px;
+    }
+    #MenuFonts,#drpbtn {
+       font-size:18px;
+    }
+      
+    #mainContent {
+        margin-top:60px;
+    }
+    #mySidenav {
+         margin-top:111px;
+            height:410px;
+    }
+ 
+}
+/*Segment form 1024*768*/
+@media only screen and (max-width: 1024px) and (max-height: 768px) {
+    body {
+        font-size:11px;
+    }
+        #main_nav {
+        height:70px;
+    }
+    #DisplayText {
+        margin-top:4px;
+        font-size:24px;
+    }
+     #MenuFonts,#drpbtn {
+       font-size:14px;
+    }
+    #MenuBar {
+        margin-top: -18px;
+    }
+      #mainContent {
+        margin-top:30px;
+     
+    }
+    #mySidenav {
+         margin-top:85px;
+         /*width:20%;*/
+          height:410px;      
+    }
+ 
+}

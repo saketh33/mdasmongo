@@ -1,0 +1,83 @@
+﻿/*#region [File Header]
+     * $Archive: $
+     * $Revision: 1.0 $
+     * $Date: 19-Feb-2019 $
+     * $Author: Swaroop M $
+     *
+     * Copyright © 2019 Larsen and Toubro
+     * All rights reserved.
+     * 
+     * This software is the confidential and proprietary information
+     * of Larsen and Toubro.  Copying or reproduction without prior written
+     * approval is prohibited.
+ */
+
+/*<---[History]---->
+    CSS Name         : SchedularConfig
+    CSS Class ID     : MDASWeb.Content.SchedularConfig
+    CSS Purpose	     : To style the HTML elements of Schedular Configuration UI in Modem Management page.
+
+    Revision History:
+    -----------------------------------------------------------------------
+      Ver #        Date            Author/Modified By         Remarks
+    -----------------------------------------------------------------------
+      1.0       19-Feb-2019           Swaroop M               Initial
+    -----------------------------------------------------------------------*/
+
+/***************************************** FOR MODEM MANAGEMENT *****************************************/
+
+/*** PANEL INFO ***/
+.panel.with-nav-tabs .panel-heading {
+	padding: 5px 5px 0 5px;
+}
+.panel.with-nav-tabs .nav-tabs {
+	border-bottom: none;
+}
+.panel.with-nav-tabs .nav-justified {
+	margin-bottom: -1px;
+}
+.active {
+	background-color: #ffffff !important;
+}
+.with-nav-tabs.panel-info .nav-tabs > li > a,
+.with-nav-tabs.panel-info .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-info .nav-tabs > li > a:focus {
+	color: #31708f !important;
+	margin-right: 0px;
+}
+.with-nav-tabs.panel-info .nav-tabs > .open > a,
+.with-nav-tabs.panel-info .nav-tabs > .open > a:hover,
+.with-nav-tabs.panel-info .nav-tabs > .open > a:focus,
+.with-nav-tabs.panel-info .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-info .nav-tabs > li > a:focus {
+	color: #31708f !important;
+	background-color: #bce8f1 !important;
+	border-color: transparent !important;
+}
+.with-nav-tabs.panel-info .nav-tabs > li.active > a,
+.with-nav-tabs.panel-info .nav-tabs > li.active > a:hover,
+.with-nav-tabs.panel-info .nav-tabs > li.active > a:focus {
+	color: #31708f !important;
+	background-color: #fff !important;
+	border-color: #bce8f1 !important;
+	border-bottom-color: transparent !important;
+}
+.with-nav-tabs.panel-info .nav-tabs > li.dropdown .dropdown-menu {
+	background-color: #d9edf7 !important;
+	border-color: #bce8f1 !important;
+}
+.with-nav-tabs.panel-info .nav-tabs > li.dropdown .dropdown-menu > li > a {
+	color: #31708f !important;
+}
+.with-nav-tabs.panel-info .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+.with-nav-tabs.panel-info .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+	background-color: #bce8f1 !important;
+}
+.with-nav-tabs.panel-info .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+.with-nav-tabs.panel-info .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+.with-nav-tabs.panel-info .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+	color: #fff !important;
+	background-color: #31708f !important;
+}
+
+/********************************************** END **************************************************/

@@ -1,0 +1,285 @@
+﻿/*#region [File Header]
+     * $Archive: $
+     * $Revision: 1.0 $
+     * $Date: 19-Feb-2019 $
+     * $Author: Nivetha S $
+     *
+     * Copyright © 2019 Larsen and Toubro
+     * All rights reserved.
+     * 
+     * This software is the confidential and proprietary information
+     * of Larsen and Toubro.  Copying or reproduction without prior written
+     * approval is prohibited.
+ */
+
+/*<---[History]---->
+    CSS Name         : Hierarchy
+    CSS Class ID     : MDASWeb.Content.Hierarchy
+    CSS Purpose	     : To style the HTML elements of Hierarchy page.
+
+    Revision History:
+    -----------------------------------------------------------------------
+        Ver #        Date            Author/Modified By         Remarks
+    -----------------------------------------------------------------------
+        1.0        19-Feb-2019          Nivetha S               Initial
+    -----------------------------------------------------------------------*/
+
+/***************************************** FOR HIERARCHY MANAGEMENT *****************************************/
+
+/**
+ * === MODAL CREATE & EDIT ===
+**/
+
+/*Align Slide Menu to left*/
+.left-div {
+    float: left;
+}
+
+/*Keep MainContent beside SlideMenu*/
+.right-div {
+    margin-left: 40px;
+}
+
+/*MainContent style*/
+#mainContent {
+    margin-top: 9.6em;
+    margin-left: 17em;
+    padding: 3px;
+    transition: margin-left .8s;
+    padding-left: 16px;
+}
+
+/*Table style*/
+table {
+    border: 1px solid double;
+    margin: 10px 0 0px 0;
+    width: 100%;
+    padding: 0 0 0 0;
+}
+
+/*Div Within Panel Body*/
+.blkDesign {
+    margin-right: auto;
+}
+
+thead {
+    width: 100%;
+}
+
+tbody {
+    width: 100%;
+}
+
+/*Anchor Text Style*/
+.myAclass {
+    color: white;
+}
+
+/*Navigation Div Style*/
+.NavDiv {
+    min-width: 15%;
+    max-width: 100%;
+    height: 24em;
+}
+
+/*Hierarchy Button Style*/
+.ZnButton {
+    align-self: center;
+    width: 100%;
+    min-width: 7.5em;
+    text-decoration-style: solid;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border-radius: 15px;
+    padding-top: 0.67em;
+    padding-bottom: 0.67em;
+    margin-bottom: 3.5px;
+    font-size: 100%;
+    font-weight: 600;
+}
+
+/*Transform Hierarchy Button on Y axis OnClick*/
+.ZnButton:active {
+    transform: translateY(3px);
+}
+
+/*Content Div Style*/
+.BodyDiv {
+    min-width: 75%;
+    max-width: 100%;
+    height: 24em;
+    padding-left: 1.5em;
+}
+
+/*Content Table Header Style*/
+.ColumnHeadth {
+    background-color: #d9edf7 !important;
+    text-align: center;
+    text-decoration-style: solid;
+    color: #3a87ad !important;
+}
+
+/*Form Lable Style*/
+.PopUplabel {
+    display: inline-block;
+    width: 13em;
+    text-align: right;
+    color: black !important;
+    font-weight: bold;
+}
+
+/*Align Delete Button to Center*/
+.deletebtn {
+    text-align: center;
+}
+
+#ZoneRec {
+    width: 100%;
+}
+
+/*Required field style*/
+.required:after {
+    content: "*";
+    font-weight: bold;
+    color: red;
+    font-size: medium;
+}
+
+/*Error Message field style*/
+.EditErrorBlk {
+    margin-left: 0px;
+}
+
+/*Hierarchy Container View*/
+.HViewContainer {
+    height: 19.5em;
+    min-width: 32em;
+    max-width: 100%;
+    padding: 0 0 0 0;
+}
+
+/*Hierarchy Container Body View*/
+.HView {
+    height: 16.6em;
+    overflow-y: auto;
+    display: block;
+}
+
+/*Form Input Field Style*/
+.ConsInputBox {
+    padding: 0.36em 1.08em;
+    width: 92%;
+    border-color: lightgray;
+    border-width: thin;
+}
+
+/*Form Label Style*/
+.ConsLabel {
+    margin-right: 3.5em;
+    font-size: small;
+    width: 12em;
+}
+
+/*Pop-up Form Styles*/
+.modal-dialog {
+    height: 100% !important;
+    padding-top: 15%;
+}
+
+.modal-content {
+    height: auto !important;
+    overflow: visible !important;
+}
+
+.modal-title {
+    font-weight: 300;
+    padding: 2px 16px;
+    color: #3a87ad !important;
+}
+
+.modal-header {
+    background-color: #d9edf7 !important;
+}
+
+.modal-footer {
+    background-color: #d9edf7 !important;
+    padding-right: 220px;
+    margin-bottom: -20px;
+}
+
+/*Panel Styles*/
+.panel-footer {
+    padding: 0px;
+    border-top-width: 0px;
+}
+
+
+.panel-body {
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.panel {
+    margin-bottom: 5px;
+}
+
+.panelTitle {
+    margin: 5px 0 5px 0;
+}
+
+/*Form Close(x) Style*/
+#cloose {
+    color: #3a87ad !important;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    #cloose:hover,
+    #cloose:focus {
+        color: #000 !important;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+#close {
+    margin-top: -28px;
+    color: black;
+}
+
+/*Content Panel Styles*/
+.RecordPanel {
+    min-width: 431px;
+    max-width: 100%;
+}
+
+/*Anchor text colour on Hover / Focus*/
+a:hover, a:focus {
+    color: white;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*Panal Footer & Pagination*/
+#background {
+    background-color: #d9edf7;
+    color: #3a87ad;
+    margin-bottom: -38px;
+    padding-bottom: 40.5px;
+}
+.pagination-container {
+    background-color: #d9edf7 !important;
+    margin-bottom: 40px !important;
+}
+.pagination {
+    margin: auto !important;
+    float: right;
+    padding-right: 2%;
+}

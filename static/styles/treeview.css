@@ -1,0 +1,58 @@
+﻿/*#region [File Header]
+     * $Archive: $
+     * $Revision: 1.0 $
+     * $Date: 19-Feb-2019 $
+     * $Author: Nivetha S $
+     *
+     * Copyright © 2019 Larsen and Toubro
+     * All rights reserved.
+     * 
+     * This software is the confidential and proprietary information
+     * of Larsen and Toubro.  Copying or reproduction without prior written
+     * approval is prohibited.
+ */
+
+/*<---[History]---->
+    CSS Name         : treeview
+    CSS Class ID     : MDASWeb.Content.treeview
+    CSS Purpose	     : To style the HTML elements Tree View of Hierarchy page.
+
+    Revision History:
+    -----------------------------------------------------------------------
+        Ver #        Date            Author/Modified By         Remarks
+    -----------------------------------------------------------------------
+        1.0        19-Feb-2019          Nivetha S               Initial
+    -----------------------------------------------------------------------*/
+
+/***************************************** FOR CREATE TREE VIEW *****************************************/
+
+/**
+ * === TREE VIEW LIST STYLE===
+**/
+
+#Decor {
+	width:200px;
+	background-color:#F4F4EE;
+}
+
+#Decor, #Decor ul {
+	list-style-type: none;
+	margin-left:25px;
+	margin-bottom:5px;
+	padding-left:20px;
+    cursor:pointer;
+    list-style:none;
+    height:100%;
+}
+
+.handle { 
+	background: transparent url( /images/tree-handle.png ) no-repeat left top; 
+	display:block; 
+	float:left;
+	width:10px; 
+	height:10px;
+	cursor:pointer;
+}
+
+.closed { background-position: left top; }
+.opened { background-position: left -10px; }

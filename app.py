@@ -4,7 +4,8 @@ import bcrypt
 
 app = Flask(__name__)
 app.secret_key = "testing"
-
+app.static_folder = 'static'
+app.static_url_path=''
 client = MongoClient('localhost', 27017)
 db = client.local
 records = db.logintest
@@ -69,14 +70,14 @@ def login():
             message = 'Email not found'
             return render_template('login.html', message=message)
     else:
-        return render_template('login.html', message=message)
+        return render_template('login.html')
 
 @app.route('/home', methods=["POST", "GET"])
 def home():
     allmeters=meterids.find_one({"meterd":"yes"},{"meteridlist":1,"_id":0})
     if "email" in session:
         email = session["email"]
-        return render_template('home.html', email=email,allmeters=allmeters['meteridlist'])
+        return render_template('home.html', email=email,allmeters=allmeters['meteridlist'],allmeterlen=len(allmeters['meteridlist']))
     else:
         return redirect(url_for("login"))
 
@@ -84,9 +85,10 @@ def home():
 def logout():
     if "email" in session:
         session.pop("email", None)
-        return render_template("signout.html")
+        message="you have been logged out sucessfully"
+        return render_template('login.html', message=message)
     else:
-        return render_template('index.html')
+        return redirect(url_for("login"))
 
 @app.route('/getdata/<meterid>/<tag>', methods=['POST',"GET"])
 def remove(meterid,tag):

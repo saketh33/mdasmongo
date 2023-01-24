@@ -1,0 +1,177 @@
+﻿/*#region [File Header]
+     * $Archive: $
+     * $Revision: 1.0 $
+     * $Date: 19-Feb-2019 $
+     * $Author: Amarendra Sasmal $
+     *
+     * Copyright © 2019 Larsen and Toubro
+     * All rights reserved.
+     * 
+     * This software is the confidential and proprietary information
+     * of Larsen and Toubro.  Copying or reproduction without prior written
+     * approval is prohibited.
+ */
+
+/*<---[History]---->
+    CSS Name         : PartialLayoutStyleSheet
+    CSS Class ID     : MDASWeb.Content.PartialLayoutStyleSheet
+    CSS Purpose	     : To style the HTML elements of Report page.
+
+    Revision History:
+    -----------------------------------------------------------------------
+        Ver #        Date            Author/Modified By         Remarks
+    -----------------------------------------------------------------------
+        1.0        19-Feb-2019         Amarendra Sasmal          Initial
+    -----------------------------------------------------------------------*/
+
+/***************************************** REPORT PAGE *****************************************/
+
+body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .8s;
+}
+
+.sidenav {
+    height: 82%;
+    width: 240px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #254A69 !important;
+    border-radius: 0px 5px 5px 0px;
+    overflow-x: hidden;
+    transition: 0.5s;
+    margin-top: 10em;
+    padding-top: 30px;
+}
+
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.5s;
+    }
+
+
+
+#Slide {
+    height: 25px;
+    width: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #254A69 !important;
+    border-radius: 0px 3px 3px 0px;
+    border: 1px solid;
+    border-color: #254A69;
+    margin-top: 12em;
+}
+
+hr {
+    clear: both;
+    visibility: hidden;
+}
+
+#inputHome {
+    margin-left: 45px;
+    width: 70px;
+}
+
+#SearchHomebtn {
+    background-color: #A9CDEC !important;
+    border: 1px solid;
+    border-color: #A9CDEC;
+    border-radius: 3px;
+    height: 26px;
+    width: 60px;
+}
+
+    #SearchHomebtn:hover {
+        background-color: #eaec4e !important;
+        border: 1px solid;
+        border-color: #eaec4e;
+        border-radius: 3px;
+        width: 60px;
+    }
+
+    #SearchHomebtn:active {
+        background-color: #ffa02a !important;
+        border: 1px solid;
+        border-color: #ffa02a;
+        border-radius: 3px;
+        width: 60px;
+    }
+
+#SearchField {
+    min-width: 250px;
+    max-width: 350px;
+}
+
+#closeHomebtn {
+    background-color: #254A69 !important;
+    height: 26px;
+    width: 50px;
+    border: 1px;
+    border-radius: 3px 0px 0px 3px;
+    margin-left: 200px;
+    border-color: #ffa02a;
+    color: white;
+    font-size: 18px;
+}
+
+    #closeHomebtn:hover {
+        background-color: #eaec4e !important;
+        width: 50px;
+        border: 1px;
+        border-radius: 3px 0px 0px 3px;
+        border-color: #254A69;
+    }
+
+    #closeHomebtn:active {
+        background-color: #ffa02a !important;
+        width: 50px;
+        border: 1px;
+        border-radius: 3px 0px 0px 3px;
+        border-color: #254A69;
+    }
+
+.hr {
+    padding-top: -10px;
+}
+
+#SearchItem,
+#Filter,
+#Month,
+#Year {
+    max-width: 100px;
+    min-width: 80px;
+}
+
+#SearchField {
+    min-width: 250px;
+    max-width: 350px;
+}
+
+/*@media (max-width: 768px) {
+    .sidenav {
+        margin-left: -250px;
+    }
+    .sidenav.active {
+        margin-left: 0;
+    }
+    .sidenavCollapse span {
+        display: none;
+    }
+}*/
+
+@media screen and (max-width: 400px) {
+    html, body {
+        width: 400px;
+    }
+}
+
+
+/***************************************** END *****************************************/

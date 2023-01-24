@@ -1,0 +1,97 @@
+﻿/*#region [File Header]
+     * $Archive: $
+     * $Revision: 1.0 $
+     * $Date: 19-Feb-2019 $
+     * $Author: Amarendra Sasmal $
+     *
+     * Copyright © 2019 Larsen and Toubro
+     * All rights reserved.
+     * 
+     * This software is the confidential and proprietary information
+     * of Larsen and Toubro.  Copying or reproduction without prior written
+     * approval is prohibited.
+ */
+
+/*<---[History]---->
+    CSS Name         : HomeMenuPage
+    CSS Class ID     : MDASWeb.Content.HomeMenuPage
+    CSS Purpose	     : To style the HTML elements of Home page.
+
+    Revision History:
+    -----------------------------------------------------------------------
+        Ver #        Date            Author/Modified By         Remarks
+    -----------------------------------------------------------------------
+        1.0        19-Feb-2019        Amarendra Sasmal          Initial
+    -----------------------------------------------------------------------*/
+
+/***************************************** HOME PAGE *****************************************/
+
+#HomeLabelDesign {
+    padding-top: 2.5%;
+    padding-left: 2.5%;
+    text-align: center;
+    text-decoration-style: solid;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #254A69;
+}
+
+table {
+    border-collapse: collapse;
+    margin-left: 2.5%;
+}
+
+table, td, th {
+    border: 1px solid black;
+    height: 3%;
+}
+
+.modal-dialog {
+    height: 100% !important;
+}
+
+.modal-content {
+    height: auto !important;
+    overflow: visible;
+}
+
+.modal-title {
+    font-weight: 300;
+    /*padding: 2px 16px;*/
+    padding: 0.5% 3%;
+    color: #3a87ad;
+}
+
+.modal-header {
+    background-color: #d9edf7;
+}
+
+.SlNoCol {
+    width: 150px;
+}
+
+.NameCol {
+    width: 300px;
+}
+
+.ConIDCol {
+    width: 150px;
+}
+
+.MtrNoCol {
+    width: 150px;
+}
+
+.CNoCol {
+    width: 150px;
+}
+
+.AdrsCol {
+    width: 200px;
+}
+
+.PinCol {
+    width: 100px;
+}
+
+/***************************************** END *****************************************/

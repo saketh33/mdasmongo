@@ -1,0 +1,263 @@
+﻿/*#region [File Header]
+     * $Archive: $
+     * $Revision: 1.0 $
+     * $Date: 19-Feb-2019 $
+     * $Author: Swaroop M $
+     *
+     * Copyright © 2019 Larsen and Toubro
+     * All rights reserved.
+     * 
+     * This software is the confidential and proprietary information
+     * of Larsen and Toubro.  Copying or reproduction without prior written
+     * approval is prohibited.
+ */
+
+/*<---[History]---->
+    CSS Name         : SchedularConfig
+    CSS Class ID     : MDASWeb.Content.SchedularConfig
+    CSS Purpose	     : To style the HTML elements of Schedular Configuration UI in user management page.
+
+    Revision History:
+    -----------------------------------------------------------------------
+      Ver #        Date            Author/Modified By         Remarks
+    -----------------------------------------------------------------------
+      1.0       19-Feb-2019            Swaroop M               Initial
+    -----------------------------------------------------------------------*/
+
+/***************************************** FOR USER MANAGEMENT *****************************************/
+
+/**
+ * === MODAL CREATE & EDIT ===
+**/
+
+/*modal Header*/
+.modal-dialog {
+    height: 100% !important;
+    padding-top: 15%;
+}
+
+.modal-content {
+    height: auto !important;
+    overflow: visible;
+}
+
+.modal-title {
+    font-weight: 300;
+    /*padding: 2px 16px;*/
+    padding: 0.5% 3%;
+    color: #3a87ad;
+}
+
+.modal-header {
+    background-color: #d9edf7;
+}
+
+.modal-footer {
+    background-color: #d9edf7;
+    padding-right: 220px;
+    margin-bottom: -35px;
+}
+
+/*Model Access Rights (Alignment)*/
+.col-sm-8 {
+    margin-left: 4%;
+    /*margin-left: 20px;*/
+}
+
+/*Model Labels*/
+.col-sm-3 {
+    color: black;
+    padding-top: 2%;
+}
+
+/**/
+#top-padding {
+    padding-top: 2% !important;
+    /*padding-top: 2px !important;*/
+}
+
+/*Modal Close(x)*/
+#cloose {
+    color: #3a87ad;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    /*margin-top: -28px;*/
+}
+
+    #cloose:hover,
+    #cloose:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/**
+ * === PANAL TABLE & FUNCTIONALITY ===
+**/
+
+/*Panal Header*/
+.panel-title {
+    /*padding-top: 8px;*/
+    padding-top: 1.5%;
+}
+/*Create New Button*/
+.col-xs-2 {
+    top: 0.125em;
+}
+/*Filter Text*/
+.col-xs-3 {
+    /*left: 20px;*/
+    left: 3%;
+}
+
+/*Panal Body*/
+.scrollingTable {
+    overflow-y: auto;
+}
+
+/*Panal Footer & Pagination*/
+#background {
+    background-color: #d9edf7;
+    color: #3a87ad;
+    margin-bottom: -73px;
+    /*padding-bottom: 70px;*/
+    /*margin-bottom: -4.5%;*/
+    padding-bottom: 35px;
+}
+
+.pagination-container {
+    background-color: #d9edf7 !important;
+    margin-bottom: 73px !important;
+        padding-left: 15px;
+}
+
+.pagination {
+    /*margin: auto !important;*/
+    margin-top: 33px !important;
+    float: right;
+    /*padding-right: 10px;*/
+    padding-right: 1%;
+}
+
+/*For Panel Table*/
+.panel-table .panel-body {
+    padding: 0;
+}
+
+    .panel-table .panel-body .table-bordered {
+        border-style: none;
+        margin: 0;
+    }
+
+        .panel-table .panel-body .table-bordered > thead > tr > th:first-of-type {
+            text-align: center;
+            width: 13%;
+        }
+
+        .panel-table .panel-body .table-bordered > thead > tr > th:last-of-type,
+        .panel-table .panel-body .table-bordered > tbody > tr > td:last-of-type {
+            border-right: 0em;
+        }
+
+        .panel-table .panel-body .table-bordered > thead > tr > th:first-of-type,
+        .panel-table .panel-body .table-bordered > tbody > tr > td:first-of-type {
+            border-left: 0em;
+        }
+
+        .panel-table .panel-body .table-bordered > tbody > tr:first-of-type > td {
+            border-bottom: 0em;
+        }
+
+        .panel-table .panel-body .table-bordered > thead > tr:first-of-type > th {
+            border-top: 0em;
+        }
+
+.panel-table .panel-footer .pagination {
+    margin: 0em;
+}
+
+/*
+Panal Footer - used to vertically center elements, may need modification if you're not using default sizes.
+*/
+.panel-table .panel-footer .col {
+    line-height: 34px;
+    height: 34px;
+}
+
+.panel-table .panel-heading .col h3 {
+    line-height: 30px;
+    height: 30px;
+}
+
+.panel-table .panel-body .table-bordered > tbody > tr > td {
+    line-height: 34px;
+}
+
+.table thead > tr > th {
+    vertical-align: text-bottom !important;
+    text-align: center;
+}
+
+/*For Filter*/
+.form-control {
+    margin: auto !important;
+}
+
+/**********************
+    tbody {
+    max-height: 8.5em;
+    overflow-y: auto;
+    overflow-x:hidden;
+}
+
+th {
+    min-width:13.6em;
+    text-align:center;
+        
+}
+td {
+   
+    min-width:13.6em;
+    text-align:center;                        
+}
+
+thead > tr, tbody{
+    display:block;}
+**********************/
+
+/***************************************** END *****************************************/
+
+/*Not in UserManagement*/
+#space {
+    padding-bottom: 5px !important;
+}
+/*Not in UserManagement*/
+#width-btn {
+    margin-right: 8px;
+}
+/*For Import Consumer - (Custom FileDialog - File Selection)*/
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-file input[type="file"] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        background: red;
+        cursor: inherit;
+        display: block;
+    }
+
+input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
+}

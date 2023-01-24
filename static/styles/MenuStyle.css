@@ -1,0 +1,174 @@
+﻿/*#region [File Header]
+     * $Archive: $
+     * $Revision: 1.0 $
+     * $Date: 19-Feb-2019 $
+     * $Author: Amarendra Sasmal $
+     *
+     * Copyright © 2019 Larsen and Toubro
+     * All rights reserved.
+     * 
+     * This software is the confidential and proprietary information
+     * of Larsen and Toubro.  Copying or reproduction without prior written
+     * approval is prohibited.
+ */
+
+/*<---[History]---->
+    CSS Name         : MenuStyle
+    CSS Class ID     : MDASWeb.Content.MenuStyle
+    CSS Purpose	     : To style the HTML elements of HomePage and Login Page
+
+   Revision History:
+    -----------------------------------------------------------------------
+        Ver #        Date            Author/Modified By         Remarks
+    -----------------------------------------------------------------------
+        1.0       19-Feb-2019         Amarendra Sasmal          Initial
+    -----------------------------------------------------------------------*/
+
+/********************************** HOME PAGE AND LOGIN PAGE ************************************/
+
+body {
+    background: white !important;
+}
+
+#main_nav {
+    background-color: #254A69 !important;
+    border: 5px solid !important;
+    border-color: #254A69 !important;
+    text-decoration: none !important;
+    color: white !important;
+    text-orientation: sideways-left !important;
+ 
+}
+
+.navbar-fixed-top {
+    position: relative;
+}
+
+#main_nav-toggle,
+#main_nav,
+#main_nav-nav li a {
+    max-height: 100%;
+    min-height: 10%;
+    padding-top: 0;
+    transition-duration: 5s;
+}
+
+#menu_nav-default,
+#menu_nav {
+    background-color: #254A69 !important;
+    border: 5px solid !important;
+    border-color: #254A69 !important;
+    text-decoration: none !important;
+    color: white !important;
+    text-orientation: sideways-left !important;
+    margin-top: 0px !important;
+    transition-duration: 5s;
+}
+
+.navbar-collapse.in {
+    overflow: hidden !important;
+    height: 100% !important;
+    transition-duration: 5s;
+}
+
+#Submit {
+    background-color: #A9CDEC !important;
+    border: 1px solid;
+    border-color: #A9CDEC;
+    border-radius: 3px;
+}
+
+    #Submit:hover {
+        background-color: #eaec4e !important;
+        border: 1px solid;
+        border-color: #eaec4e;
+        border-radius: 3px;
+    }
+
+    #Submit:active {
+        background-color: #ffa02a !important;
+        border: 1px solid;
+        border-color: #ffa02a;
+        border-radius: 3px;
+    }
+
+#Logout {
+    background-color: #A9CDEC !important;
+    border: 1px solid;
+    border-color: #A9CDEC;
+    border-radius: 3px;
+}
+
+    #Logout:hover {
+        background-color: #eaec4e !important;
+        border: 1px solid;
+        border-color: #eaec4e;
+        border-radius: 3px;
+    }
+
+    #Logout:active {
+        background-color: #ffa02a !important;
+        border: 1px solid;
+        border-color: #ffa02a;
+        border-radius: 3px;
+    }
+
+li a {
+    display: block;
+    text-align: center;
+    padding: 2px 13px;
+    text-decoration: none;
+    /*float:left;*/
+}
+
+    li a:hover:not(.active) {
+        background-color: #eaec4e !important;
+        border: 1px solid;
+        border-color: #eaec4e;
+        border-radius: 3px;
+    }
+
+
+.active {
+    background-color: #FFC332;
+}
+
+#Loginform {
+    padding: 1%;
+    margin-left: 1%;
+    margin-top: 6%;
+    min-width: 200px;
+    border: 1px;
+    border-color: #6799a3;
+    border-radius: 10px;
+    border-style: solid;
+    background-color: transparent;
+    width: 90%;
+}
+
+div.well {
+    height: 250px;
+}
+
+.Absolute-Center {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+    .Absolute-Center.is-Responsive {
+        width: 50%;
+        height: 35%;
+        min-width: 20%;
+        max-width: 42%;
+        padding: 0px;
+    }
+
+label {
+    color: whitesmoke;
+}
+
+/***************************************** END *****************************************/

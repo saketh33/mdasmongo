@@ -1,61 +1,593 @@
-{% extends "base.html" %}
-<!DOCTYPE html>   
-<html lang="en">   
-<head>
-{% block title %}Youv'e logged in {% endblock %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <!-- /Added by HTTrack -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>SANGRAH</title>
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static',filename='styles/assets/main.87c0748b313a1dda75f5.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static',filename='styles/font-awesome/css/all.min.css') }}" rel="stylesheet" />
+    <style>
+      @media only screen and (min-width: 320px) and (max-width: 576px) {
+        .medialaptop {
+          max-width: 850px;
+        }
 
-{% block content %}
-<body style="margin:20px auto">
+        .medialaptopwithside {
+          max-width: 550px;
+        }
+      }
+
+      @media only screen and (min-width : 1224px) {
+        .medialaptop {
+          max-width: 1450px;
+        }
+
+        .medialaptopwithside {
+          max-width: 1150px;
+        }
+      }
+
+      @media only screen and (min-width : 1824px) {
+        .medialaptop {
+          max-width: 1750px;
+        }
+
+        .medialaptopwithside {
+          max-width: 1450px;
+        }
+      }
+    </style>
+  </head>
+  <body>
     {% if message  %}
     <div class="alert alert-secondary" role="alert">
         <p>{{ message }}</p>
     </div>
 {% endif %}  
-<p>Hello You have Logged in as {{ email }}</p>
-
-{% if showhierarchy==0 %}
-    <p>you dont have any hirerachy</p>
-{% else %}
-    <p>your hierarchy name is {{ showhierarchy }}</p>
-    {% if list==0 %}
-        <p>you dont have any levels, sorry !<a href="{{url_for('myhierarchycreate')}}">create level</a></p>
-    {% else %}
-        <p>you have only {{leng}} levels as of now</p>
-            
-            <div class="container">
-                <div class="row header" style="text-align:center;color:green"></div>
-                <table id="myTable" class="table table-striped" >  
-                    <thead>  
-                          <tr>  
-                            <th>hierarchy</th>  
-                            <th>action</th>  
-                          </tr>  
-                    </thead>  
-                        <tbody> 
-                            {% for i in list %}   
-                          <tr>  
-                            <td>{{i}}</td>  
-                            <td><a href="{{url_for('myleveldetails',levelname=i)}}">show level details</a></td>  
-                          </tr> 
-                          {%endfor%} 
-                          
-                          
-                        </tbody>  
-                </table>  
+    <div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
+      <div class="app-header header-shadow">
+        <div class="app-header__logo">
+          <h4>
+            <strong class="whitecolor">SANGRAH</strong>
+          </h4>
+          <div class="header__pane ml-auto hiding">
+            <div>
+              <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                <span class="hamburger-box">
+                  <span class="hamburger-inner"></span>
+                </span>
+              </button>
             </div>
-            <h4>balance tags are {{10-leng}}</h4>
-                          
-            <a href="{{url_for('myhierarchycreate')}}">create new level</a></td>
-        {% endif %}
-{% endif %}
+          </div>
+        </div>
+        <div class="app-header__mobile-menu">
+          <div>
+            <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="app-header__menu">
+          <span>
+            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+              <span class="btn-icon-wrapper">
+                <i class="fa fa-ellipsis-v fa-w-6"></i>
+              </span>
+            </button>
+          </span>
+        </div>
+        <div class="app-header__content">
+          <div class="app-header-left">
+            <a class="mb-2 mr-2 btn-hover-shine btn btn-light" href="{{url_for('home')}}">Home</a>           
+            <a class="mb-2 mr-2 btn-hover-shine btn btn-light" href="{{url_for('myhierarchyshwolevels')}}">Configure</a>           
+            <a class="mb-2 mr-2 btn-hover-shine btn btn-light" href="/Home/InstantaneousReportHome">Real Time Data</a>
+            <div class="dropdown d-inline-block">
+              <button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="mb-2 mr-2 dropdown-toggle btn btn-light">Reports</button>
+              <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-xl dropdown-menu">
+                <ul class="nav flex-column">
+                  <li class="nav-item-header nav-item">Activity</li>
+                  <li class="nav-item">
+                    <a href="#" onclick="OpenReports('Meter_Reports'); return false;" class="nav-link">
+                      <i class="fa fa-file-text fa-fw"></i> Meter Reports </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" onclick="OpenReports('AMR_Reports'); return false;" class="nav-link">
+                      <i class="fa fa-file-text fa-fw"></i> AMR Reports </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="app-header-right">
+            <p>Logged in as {{ email }}</p>
+            <div class="header-btn-lg pr-0">
+              <div class="widget-content p-0">
+                <div class="widget-content-wrapper">
+                  <div class="dropdown">
+                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-xl rm-pointers dropdown-menu dropdown-menu-right">
+                      <div class="dropdown-menu-header mb-0">
+                        <div class="dropdown-menu-header-inner bg-deep-blue">
+                          <div class="menu-header-image opacity-1" style="background-image: url('Content/assets/images/dropdown-header/city3.jpg');"></div>
+                          <div class="menu-header-content text-dark">
+                            <h5 class="menu-header-title">Notifications</h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="tab-messages-header" role="tabpanel">
+                          <div class="scroll-area-sm">
+                            <div class="scrollbar-container ps">
+                              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                              </div>
+                              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="widget-content-left">
+                    <a class="mb-2 mr-2 btn-hover-shine btn btn-light" href="/logout">Logout</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="app-main">
+        <div class="se-pre-con"></div>
+        <div class="app-sidebar sidebar-shadow">
+          <div class="app-header__logo">
+            <div class="logo-src"></div>
+            <div class="header__pane ml-auto">
+              <div>
+                <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                  <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="app-header__mobile-menu">
+            <div>
+              <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                <span class="hamburger-box">
+                  <span class="hamburger-inner"></span>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div class="app-header__menu">
+            <span>
+              <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                <span class="btn-icon-wrapper">
+                  <i class="fa fa-ellipsis-v fa-w-6"></i>
+                </span>
+              </button>
+            </span>
+          </div>
+          <div class="scrollbar-sidebar ps">
+            <div class="app-sidebar__inner" style="margin-top:60px">
+              <div class="form-group" id="SearchField">
+                <label class="app-sidebar__heading">
+                  <u>Configure</u>
+                </label>
+                <button type="button" id="UnderHomebtn" style="width:182px" class="mb-2 mr-2 btn-hover-shine btn btn-light" onclick="CallCreateZone()">Hierarchy Management</button>
+                <button type="button" id="UnderHomebtn" class="mb-2 mr-2 btn-hover-shine btn btn-light" style="width:182px" onclick="NavigateToPage()">User Management</button>
+              </div>
+            </div>
+            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+              <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+            </div>
+            <div class="ps__rail-y" style="top: 0px; right: 0px;">
+              <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="app-main__outer">
+          <div class="app-main__inner">
+            <div class="app-page-title">
+              <div class="page-title-wrapper">
+                <div id="mainContent" class="right-div" style="margin-top: 30px; width: 100%;">
+                  <div class="panel panel-info panel-table panel-primary filterable RecordPanel">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                      <div class="row blkDesign">
+                        <div class="main-card mb-3 card" style="width:100%">
+                          <div class="card-body">
+                            <h5 class="card-title"><p>your hierarchy name is {{ showhierarchy }}</p></h5>
+                            <ul class="nav nav-tabs nav-justified">
+                                {% if showhierarchy==0 %}
+                                <p>you dont have any hirerachy</p>
+                                {% else %}
+                                
+                                    {% if list==0 %}
+                                        <p>you dont have any levels, sorry !<a href="{{url_for('myhierarchycreate')}}">create level</a></p>
+                                    {% else %} 
+                                    {% for i in list %}   
+                                        <li class="nav-item">
+                                            <a href="{{url_for('myleveldetails',levelname=i)}}"><span>{{i}}</span></a>
+                                        </li>
+                                    {%endfor%} 
 
-<script>
-    $(document).ready(function(){
-        $('#myTable').dataTable();
-    });
-    </script>
-{% endblock %}
+                                    {% endif %}
+                                    {% endif %}
+                            </ul>
+                            <div class="tab-content">
+                              <div class="tab-pane active" id="tab-eg11-0" role="tabpanel">
+                                <div class="card mb-3" style="width:100%">
+                                  <div class="card-body">
+                                    <button type="button" class="mb-2 mr-2 btn-hover-shine btn btn-light" data-toggle="modal" data-target="#exampleModal"> Add New </button>
+                                    <div>
+                                      <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                        
+                                        <div id="example_filter" class="dataTables_filter">
+                                          <label>Search: <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example">
+                                          </label>
+                                        </div>
+                                        <div id="example_processing" class="dataTables_processing card" style="display: none;">
+                                          <div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                          </div>
+                                        </div>
+                                        <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered dataTable no-footer dtr-inline" aria-describedby="example_info">
+                                          <thead>
+                                            <tr>
+                                              <th id="SlNo1" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 212.533px;" aria-label="Zone ID: activate to sort column ascending">Zone ID</th>
+                                              <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 245.533px;" aria-label="Zone Name: activate to sort column ascending">Zone Name</th>
+                                              <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 211.533px;" aria-label="Total Meters: activate to sort column ascending">Total Meters</th>
+                                              <th class="sorting sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 68.5333px;" aria-sort="descending" aria-label=" ADD ZONE × Zone ID : Zone Name : Meter ID : PIN Code : Address : Save Cancel EDIT ZONE × Zone ID : Zone Name : Meter ID : PIN Code : Address : Cancel : activate to sort column ascending">
+                                                <!-- Trigger the modal with a button -->
+                                                <div class="modal fade" style="margin-top: 67px;" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                  <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">ADD ZONE</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                          <span aria-hidden="true">×</span>
+                                                        </button>
+                                                      </div>
+                                                      <!-- Modal content-->
+                                                      <form action="/Hierarchy/CreateZone" data-toggle="validator" enctype="multipart/form-data" method="post" role="form">
+                                                        <div class="modal-body">
+                                                          <div class="row">
+                                                            <div class="col-md-6">
+                                                              <div class="position-relative form-group">
+                                                                <label class="" for="ZoneId">Zone ID :</label>
+                                                                <input id="CZoneid" type="text" name="Zone Id:" class="form-control" value="" data-error="Please enter Zone ID" required="">
+                                                                <div class="help-block with-errors EditErrorBlk"></div>
+                                                              </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                              <div class="position-relative form-group">
+                                                                <label class="" for="ZoneName">Zone Name :</label>
+                                                                <input id="CZoneNameID" type="text" name="Zone Name:" value="" class="form-control" data-error="Please enter Zone Name" required="">
+                                                                <div class="help-block with-errors EditErrorBlk"></div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row">
+                                                            <div class="col-md-6">
+                                                              <div class="position-relative form-group">
+                                                                <label class="" for="MeterId">Meter ID :</label>
+                                                                <input id="CMeterid" type="text" class="form-control" value="" data-error="Please enter Zone Meter ID" required="">
+                                                                <div class="help-block with-errors"></div>
+                                                              </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                              <div class="position-relative form-group">
+                                                                <label class="" for="Pincode">PIN Code :</label>
+                                                                <input type="text" maxlength="6" id="CEditPincode" class="form-control" name="PinCode:" value="" onkeypress="return AllowNumbersOnly(event)">
+                                                                <div class="help-block with-errors EditErrorBlk"></div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row">
+                                                            <div class="col-md-12">
+                                                              <div class="position-relative form-group">
+                                                                <label class="" for="Address">Address :</label>
+                                                                <textarea id="CEditAddress" class="form-control" name="Address:" value="" data-error="Please enter Address" required=""></textarea>
+                                                                <div class="help-block with-errors EditErrorBlk"></div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <div class="position-relative form-group">
+                                                          <div class="modal-footer">
+                                                            <button id="AddZone" onclick="AddRecord()" class="btn btn-light" type="button" value="Save">Save</button>
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                                          </div>
+                                                        </div>
+                                                      </form>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <!--Create Modal -->
+                                                <!--Edit Modal -->
+                                                <div class="modal fade" style="margin-top: 67px;" id="editexampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                  <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <h4 class="modal-title modelHeader" style="text-align:left;">EDIT ZONE</h4>
+                                                        <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
+                                                          <span id="cloose_btn">×</span>
+                                                        </button>
+                                                      </div>
+                                                      <form action="/Hierarchy/CreateZone" data-toggle="validator" enctype="multipart/form-data" method="post" role="form">
+                                                        <div class="modal-body">
+                                                          <div class="">
+                                                            <div class="row">
+                                                              <div class="col-md-6">
+                                                                <div class="position-relative form-group">
+                                                                  <label class="" for="ZoneId">Zone ID :</label>
+                                                                  <input id="Zoneid" type="text" name="Zone Id:" class="form-control" value="" readonly="" data-error="Please enter Zone ID" required="">
+                                                                  <div class="help-block with-errors EditErrorBlk"></div>
+                                                                </div>
+                                                              </div>
+                                                              <div class="col-md-6">
+                                                                <div class="position-relative form-group">
+                                                                  <label class="" for="ZoneName">Zone Name :</label>
+                                                                  <input id="ZoneNameID" type="text" name="Zone Name:" class="form-control" value="" data-error="Please enter Zone Name" required="">
+                                                                  <div class="help-block with-errors EditErrorBlk"></div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                            <div class="row">
+                                                              <div class="col-md-6">
+                                                                <div class="position-relative form-group">
+                                                                  <label class="" for="MeterId">Meter ID :</label>
+                                                                  <input id="Meterid" class="form-control" type="text" value="" data-error="Please enter Zone Name" required="">
+                                                                  <div class="help-block with-errors"></div>
+                                                                </div>
+                                                              </div>
+                                                              <div class="col-md-6">
+                                                                <div class="position-relative form-group">
+                                                                  <label class="" for="Pincode">PIN Code :</label>
+                                                                  <input type="text" class="form-control" maxlength="6" id="EditPincode" name="PinCode:" value="" onkeypress="return AllowNumbersOnly(event)">
+                                                                  <div class="help-block with-errors EditErrorBlk"></div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                            <div class="row">
+                                                              <div class="col-md-12">
+                                                                <div class="position-relative form-group">
+                                                                  <label class="" for="Address">Address :</label>
+                                                                  <textarea id="EditAddress" class="form-control" name="Address:" data-error="Please enter Address" required=""></textarea>
+                                                                  <div class="help-block with-errors EditErrorBlk"></div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                          <div class="modal-footer">
+                                                            <input onclick="EditRecord()" id="EditButton" class="btn btn-default" type="button" value="Update">
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                                          </div>
+                                                        </div>
+                                                      </form>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr id="dele_VIRTUAL-ZONE" class="odd">
+                                              <td class="dtr-control" tabindex="0">VIRTUAL-ZONE</td>
+                                              <td id="ZoneN_VIRTUAL-ZONE">VirtualZoneName</td>
+                                              <td id="" class="">6</td>
+                                              <td class="sorting_1">
+                                                <a onclick="LoadEdit(&quot;+VIRTUAL-ZONE+&quot;, &quot;+VirtualZoneName+&quot;,&quot;+ZoneMeterID+&quot;, &quot;++&quot;,&quot;++&quot;)" class="fa fa-edit" style="color:blue" title="Edit/View" data-toggle="modal" data-target="#editexampleModal"></a>
+                                                <a onclick="ConfirmZoneDelete(&quot;VIRTUAL-ZONE&quot;)" class="fa fa-trash" style="color:red" title="Delete"></a>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                        <div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing 1 to 1 of 1 entries</div>
+                                        <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+                                          <ul class="pagination">
+                                            <li class="paginate_button page-item previous disabled" id="example_previous">
+                                              <a href="#" aria-controls="example" data-dt-idx="previous" tabindex="0" class="page-link">Previous</a>
+                                            </li>
+                                            <li class="paginate_button page-item active">
+                                              <a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">1</a>
+                                            </li>
+                                            <li class="paginate_button page-item next disabled" id="example_next">
+                                              <a href="#" aria-controls="example" data-dt-idx="next" tabindex="0" class="page-link">Next</a>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Tree View of Zone Hierarchy -->
+                  <div class="container HViewContainer panel panel-info panel-table panel-primary filterable" style="height:29%;">
+                    <div class="panel-heading"></div>
+                    <div class="container panel-body HView"></div>
+                  </div>
+                </div>
+                <!--Consumer Add Modal -->
+                <div class="modal fade" style="margin-top: 67px;" id="myCustomerModal" tabindex="-1" role="dialog" aria-labelledby="createnew" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                  <div class="modal-dialog clearfix" style="padding-top: 15%; ">
+                    <!-- Modal content-->
+                    <div class="modal-content clearfix">
+                      <div class="modal-header">
+                        <h4 class="modal-title modelHeader" style="text-align: left; ">ADD CUSTOMER DETAILS</h4>
+                        <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
+                          <span id="cloose">×</span>
+                        </button>
+                      </div>
+                      <form action="/Hierarchy/CreateZone" data-toggle="validator" enctype="multipart/form-data" method="post" role="form">
+                        <div class="modal-body">
+                          <input name="__RequestVerificationToken" type="hidden" value="KMOUqos2bF_YcMLt9cu2OJ9oQTrsGVEPJR_C1apj0khZEF9s1o8Hdsula6PkW0OlomxYSxVhxBR2GXkig4hYRuvE0FXSncRBllfrPEQyzo01">
+                          <div class="form-horizontal">
+                            <div class="form-group row">
+                              <div class="control-label col-md-3 PopUplabel required ConsLabel"> Consumer ID : </div>
+                              <div class="col-md-7">
+                                <input id="Consumerid" class="ConsInputBox" type="text" name="Consumer ID :" value="" data-error="Please enter Consumer ID" required="">
+                                <div class="help-block with-errors" style="align-content:flex-start;"></div>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="control-label col-md-3 PopUplabel required ConsLabel"> Consumer Name : </div>
+                              <div class="col-md-7">
+                                <input id="ConsumerNameid" class="ConsInputBox" type="text" name="Consumer Name:" value="" data-error="Please enter Consumer Name" required="">
+                                <div class="help-block with-errors"></div>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="control-label col-md-3 PopUplabel required ConsLabel"> Meter Id : </div>
+                              <div class="col-md-7">
+                                <select id="ConsumerMeterid" style="width:92%;height:2.38em">
+                                  <option>18492689</option>
+                                  <option>18492740</option>
+                                  <option>18492790</option>
+                                  <option>18492800</option>
+                                  <option>18492811</option>
+                                  <option>18492839</option>
+                                  <option>18492852</option>
+                                  <option>18492869</option>
+                                  <option>18492998</option>
+                                  <option>18493009</option>
+                                  <option>18493017</option>
+                                  <option>18493022</option>
+                                  <option>18493028</option>
+                                  <option>18493101</option>
+                                  <option>18493105</option>
+                                  <option>18493108</option>
+                                  <option>18493156</option>
+                                  <option>18493181</option>
+                                  <option>18493211</option>
+                                  <option>18493251</option>
+                                  <option>18493334</option>
+                                  <option>18493359</option>
+                                  <option>18493371</option>
+                                  <option>18493382</option>
+                                  <option>18493385</option>
+                                  <option>18493393</option>
+                                  <option>18493433</option>
+                                  <option>18493444</option>
+                                  <option>18493467</option>
+                                  <option>18493540</option>
+                                  <option>18493543</option>
+                                  <option>18493583</option>
+                                  <div class="help-block with-errors"></div>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="control-label col-md-3 PopUplabel required ConsLabel"> Transformer Id : </div>
+                              <div class="col-md-7">
+                                <select id="TransformerId" style="width:92%;height:2.38em">
+                                  <option>VIRTUAL-TRANSFORMER</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="control-label col-md-3 PopUplabel required ConsLabel"> Address : </div>
+                              <div class="col-md-7">
+                                <input id="ConsumerAddress" class="ConsInputBox" type="text" name="Address:" value="" data-error="Please enter Address" required="">
+                                <div class="help-block with-errors"></div>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="control-label col-md-3 PopUplabel required ConsLabel"> PinCode : </div>
+                              <div class="col-md-7">
+                                <input type="text" maxlength="6" class="ConsInputBox" id="ConsumerPincode" name="Pincode:" value="" onkeypress="return AllowNumbersOnly(event)" data-error="Please enter PinCode" required="">
+                                <div class="help-block with-errors"></div>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="control-label col-md-3 PopUplabel required ConsLabel"> Contact No. : </div>
+                              <div class="col-md-7">
+                                <input type="text" maxlength="12" class="ConsInputBox" id="ContactNum" name="ContactNum:" value="" onkeypress="return AllowNumbersOnly(event)" data-error="Please enter Contact Number" required="">
+                                <div class="help-block with-errors"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="modal-footer">
+                            <input onclick="AddConsumerRecord()" id="EditButton" class="btn btn-default" type="button" value="Add">
+                            <button type="button" onclick="refreshPage()" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/Content/assets/scripts/main.87c0748b313a1dda75f5.js"></script>
+    <link href="/Content/DataTables/datatables.min.css" rel="stylesheet">
+    <script src="/Content/DataTables/datatables.min.js"></script>
+    <link href="/Content/font-awesome/css/all.min.css" rel="stylesheet">
+    
+    <style>
+      @media only screen and (min-width: 320px) and (max-width: 576px) {
+        .medialaptop {
+          max-width: 850px;
+        }
 
-</body>  
+        .medialaptopwithside {
+          max-width: 550px;
+        }
+      }
 
-</html> 
+      @media only screen and (min-width : 1224px) {
+        .medialaptop {
+          max-width: 1450px;
+        }
+
+        .medialaptopwithside {
+          max-width: 1150px;
+        }
+      }
+
+      @media only screen and (min-width : 1824px) {
+        .medialaptop {
+          max-width: 1750px;
+        }
+
+        .medialaptopwithside {
+          max-width: 1450px;
+        }
+      }
+    </style>
+    <svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;">
+      <defs id="SvgjsDefs1002"></defs>
+      <polyline id="SvgjsPolyline1003" points="0,0"></polyline>
+      <path id="SvgjsPath1004" d="M0 0 "></path>
+    </svg>
+    <div class="jvectormap-tip"></div>
+  </body>
+</html>
